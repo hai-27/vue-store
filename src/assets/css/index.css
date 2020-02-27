@@ -1,0 +1,102 @@
+/*
+ * @Description: 首页css样式
+ * @Author: hai-27
+ * @Date: 2020-02-07 16:23:00
+ * @LastEditors: hai-27
+ * @LastEditTime: 2020-02-27 00:46:58
+ */
+
+.main-box {
+  background-color: #f5f5f5;
+  padding-bottom: 20px;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 1225px;
+}
+
+/* 轮播图CSS */
+.block {
+  margin: 0 auto;
+  max-width: 1225px;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+/* 轮播图CSS END */
+
+.box-hd {
+  height: 58px;
+  margin: 20px 0 0 0;
+}
+
+.box-hd .title {
+  float: left;
+  font-size: 22px;
+  font-weight: 200;
+  line-height: 58px;
+  color: #333;
+}
+
+.box-hd .more {
+  float: right;
+}
+
+.box-hd .more a {
+  font-size: 16px;
+  line-height: 58px;
+  color: #424242;
+}
+
+.box-hd .more a:hover {
+  color: #ff6700;
+}
+
+.box-bd {
+  height: 615px;
+}
+
+.box-bd .promo-list {
+  float: left;
+  height: 615px;
+  width: 234px;
+}
+
+.box-bd .promo-list li {
+  z-index: 1;
+  width: 234px;
+  height: 300px;
+  margin-bottom: 14.5px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.box-bd .promo-list li:hover {
+  z-index: 2;
+  -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+  -webkit-transform: translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0);
+}
+
+.box-bd .promo-list li img {
+  width: 234px;
+  height: 300px;
+}
+
+.box-bd .promo-list img {
+  width: 234px;
+}
+
+.box-bd .list {
+  float: left;
+  height: 615px;
+  width: 991px;
+}
