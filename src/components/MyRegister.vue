@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-19 22:20:35
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:34:27
+ * @LastEditTime: 2020-03-01 15:34:34
  -->
 <template>
   <div id="register">
@@ -60,7 +60,7 @@ export default {
       if (userNameRule.test(value)) {
         //判断数据库中是否已经存在该用户名
         this.$axios
-          .post("/api/user/findUserName", {
+          .post("/api/users/findUserName", {
             userName: this.RegisterUser.name
           })
           .then(res => {
@@ -145,7 +145,7 @@ export default {
         //如果通过校验开始注册
         if (valid) {
           this.$axios
-            .post("/api/user/register", {
+            .post("/api/users/register", {
               userName: this.RegisterUser.name,
               password: this.RegisterUser.pass
             })

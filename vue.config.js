@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-28 23:45:16
+ * @LastEditTime: 2020-03-01 15:57:35
  */
 module.exports = {
   publicPath: './',
@@ -11,8 +11,8 @@ module.exports = {
     open: true,
     proxy: {
       '/api': {
-        //此处并非和url一致
-        target: 'http://47.115.85.237:3000/',
+        // target: 'http://localhost:3000/', // 本地后端地址
+        target: 'http://47.115.85.237:3000/', // 线上后端地址
         changeOrigin: true, //允许跨域
         pathRewrite: {
           '^/api': ''

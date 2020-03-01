@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-19 20:55:17
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:33:59
+ * @LastEditTime: 2020-03-01 15:34:08
  -->
 <template>
   <div id="myLogin">
@@ -95,7 +95,7 @@ export default {
         //如果通过校验开始登录
         if (valid) {
           this.$axios
-            .post("/api/user/login", {
+            .post("/api/users/login", {
               userName: this.LoginUser.name,
               password: this.LoginUser.pass
             })
