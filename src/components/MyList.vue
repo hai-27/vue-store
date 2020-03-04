@@ -3,13 +3,13 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 21:53:01
+ * @LastEditTime: 2020-03-04 23:37:54
  -->
 <template>
   <div id="myList" class="myList">
     <ul>
       <li v-for="item in list" :key="item.product_id">
-        <i class="el-icon-close delete" v-show="isDelete"></i>
+        <i class="el-icon-close delete" v-show="isDelete" @click="deleteCollect(item.product_id)"></i>
         <router-link :to="{ path: '/goods/details', query: {productID:item.product_id} }">
           <img :src="$target +item.product_picture" alt />
           <h2>{{item.product_name}}</h2>
@@ -37,7 +37,7 @@ export default {
   name: "MyList",
   // list为父组件传过来的商品列表
   // isMore为是否显示“浏览更多”
-  props: ["list", "isMore","isDelete"],
+  props: ["list", "isMore", "isDelete"],
   data() {
     return {};
   },
@@ -54,6 +54,31 @@ export default {
         }
       }
       return categoryID;
+    }
+  },
+  methods: {
+    deleteCollect(product_id) {
+      this.$axios
+        .post("/api/user/collect/deleteCollect", {
+          user_id: this.$store.getters.getUser.user_id,
+          product_id: product_id
+        })
+        .then(res => {
+          switch (res.data.code) {
+            case "001":
+              // 删除成功
+              // 提示删除成功信息
+              this.notifySucceed(res.data.msg);
+              this.$router.push({ path: "/collect" });
+              break;
+            default:
+              // 提示删除失败信息
+              this.notifyError(res.data.msg);
+          }
+        })
+        .catch(err => {
+          return Promise.reject(err);
+        });
     }
   }
 };

@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 14:17:38
+ * @LastEditTime: 2020-03-04 23:38:41
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -55,7 +55,7 @@ Axios.interceptors.response.use(
   }
 );
 
-// 全局拦截器,在进入需要用户权限的页面请校验是否已经登录
+// 全局拦截器,在进入需要用户权限的页面前校验是否已经登录
 router.beforeResolve((to, from, next) => {
   const loginUser = store.state.user.user;
   // 判断路由是否设置相应校验用户权限

@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-16 20:20:26
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:35:29
+ * @LastEditTime: 2020-03-04 22:52:41
  -->
 <template>
   <div id="details">
@@ -73,7 +73,7 @@
         <!-- 内容区底部按钮 -->
         <div class="button">
           <el-button class="shop-cart" :disabled="dis" @click="addShoppingCart">加入购物车</el-button>
-          <el-button class="like" @click="addLike">喜欢</el-button>
+          <el-button class="like" @click="addCollect">喜欢</el-button>
         </div>
         <!-- 内容区底部按钮END -->
         <div class="pro-policy">
@@ -152,7 +152,7 @@ export default {
     },
     // 加入购物车
     addShoppingCart() {
-      // 判断是否登录,没有登录则显示登录按钮
+      // 判断是否登录,没有登录则显示登录组件
       if (!this.$store.getters.getUser) {
         this.$store.dispatch("setShowLogin", true);
         return;
@@ -192,12 +192,29 @@ export default {
           return Promise.reject(err);
         });
     },
-    addLike() {
-      // 添加收藏,未完成
+    addCollect() {
+      // 判断是否登录,没有登录则显示登录组件
       if (!this.$store.getters.getUser) {
         this.$store.dispatch("setShowLogin", true);
         return;
       }
+      this.$axios
+        .post("/api/user/collect/addCollect", {
+          user_id: this.$store.getters.getUser.user_id,
+          product_id: this.productID
+        })
+        .then(res => {
+          if (res.data.code == "001") {
+            // 添加收藏成功
+            this.notifySucceed(res.data.msg);
+          } else {
+            // 添加收藏失败
+            this.notifyError(res.data.msg);
+          }
+        })
+        .catch(err => {
+          return Promise.reject(err);
+        });
     }
   }
 };

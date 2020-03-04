@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-20 17:22:56
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 22:21:56
+ * @LastEditTime: 2020-03-04 23:33:48
  -->
 <template>
   <div class="collect">
@@ -16,7 +16,7 @@
     </div>
     <div class="content">
       <div class="goods-list">
-        <MyList :list="collectProduct" :isDelete="true"></MyList>
+        <MyList :list="collectList" :isDelete="true"></MyList>
       </div>
     </div>
   </div>
@@ -25,14 +25,25 @@
 export default {
   data() {
     return {
-      collectProduct: []
+      collectList: []
     };
   },
-  created() {
-    
-  },
-  methods: {
-    
+  activated() {
+    // 获取收藏数据
+    this.$axios
+      .post("/api/user/collect/getCollect", {
+        user_id: this.$store.getters.getUser.user_id
+      })
+      .then(res => {
+        if (res.data.code === "001") {
+          this.collectList = res.data.collectList;
+        } else {
+          this.notifyError(res.data.msg);
+        }
+      })
+      .catch(err => {
+        return Promise.reject(err);
+      });
   }
 };
 </script>
