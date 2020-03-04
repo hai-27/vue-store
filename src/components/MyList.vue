@@ -3,13 +3,19 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 23:37:54
+ * @LastEditTime: 2020-03-05 01:37:50
  -->
 <template>
   <div id="myList" class="myList">
     <ul>
       <li v-for="item in list" :key="item.product_id">
-        <i class="el-icon-close delete" v-show="isDelete" @click="deleteCollect(item.product_id)"></i>
+        <el-popover placement="top">
+          <p>确定删除吗？</p>
+          <div style="text-align: right; margin: 10px 0 0">
+            <el-button type="primary" size="mini" @click="deleteCollect(item.product_id)">确定</el-button>
+          </div>
+          <i class="el-icon-close delete" slot="reference" v-show="isDelete"></i>
+        </el-popover>
         <router-link :to="{ path: '/goods/details', query: {productID:item.product_id} }">
           <img :src="$target +item.product_picture" alt />
           <h2>{{item.product_name}}</h2>
@@ -67,9 +73,15 @@ export default {
           switch (res.data.code) {
             case "001":
               // 删除成功
+              // 删除删除列表中的该商品信息
+              for (let i = 0; i < this.list.length; i++) {
+                const temp = this.list[i];
+                if (temp.product_id == product_id) {
+                  this.list.splice(i, 1);
+                }
+              }
               // 提示删除成功信息
               this.notifySucceed(res.data.msg);
-              this.$router.push({ path: "/collect" });
               break;
             default:
               // 提示删除失败信息
@@ -94,6 +106,7 @@ export default {
   background-color: white;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
+  position: relative;
 }
 .myList ul li:hover {
   z-index: 2;
@@ -153,6 +166,10 @@ export default {
   position: absolute;
   top: 10px;
   right: 10px;
+  display: none;
+}
+.myList ul li:hover .delete {
+  display: block
 }
 .myList ul li .delete:hover {
   color: #ff6700;

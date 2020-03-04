@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-20 17:22:56
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 23:33:48
+ * @LastEditTime: 2020-03-05 00:23:16
  -->
 <template>
   <div class="collect">
@@ -15,9 +15,17 @@
       </div>
     </div>
     <div class="content">
-      <div class="goods-list">
+      <div class="goods-list" v-if="collectList.length>0">
         <MyList :list="collectList" :isDelete="true"></MyList>
       </div>
+      <!-- 收藏列表为空的时候显示的内容 -->
+      <div v-else class="collect-empty">
+        <div class="empty">
+          <h2>您的收藏还是空的！</h2>
+          <p>快去购物吧！</p>
+        </div>
+      </div>
+      <!--  收藏列表为空的时候显示的内容END -->
     </div>
   </div>
 </template>
@@ -37,8 +45,6 @@ export default {
       .then(res => {
         if (res.data.code === "001") {
           this.collectList = res.data.collectList;
-        } else {
-          this.notifyError(res.data.msg);
         }
       })
       .catch(err => {
@@ -47,7 +53,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 .collect {
   background-color: #f5f5f5;
 }
@@ -72,4 +78,26 @@ export default {
   margin-left: -13.7px;
   overflow: hidden;
 }
+/* 收藏列表为空的时候显示的内容CSS */
+.collect .collect-empty {
+  width: 1225px;
+  margin: 0 auto;
+}
+.collect .collect-empty .empty {
+  height: 300px;
+  padding: 0 0 130px 558px;
+  margin: 65px 0 0;
+  background: url(../assets/imgs/cart-empty.png) no-repeat 124px 0;
+  color: #b0b0b0;
+  overflow: hidden;
+}
+.collect .collect-empty .empty h2 {
+  margin: 70px 0 15px;
+  font-size: 36px;
+}
+.collect .collect-empty .empty p {
+  margin: 0 0 20px;
+  font-size: 20px;
+}
+/* 收藏列表为空的时候显示的内容CSS END */
 </style>
