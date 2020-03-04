@@ -3,28 +3,48 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-26 23:14:57
+ * @LastEditTime: 2020-03-04 22:16:54
  -->
 <template>
-  <div class="about" id="about" name="about">关于我们</div>
+  <div class="about" id="about" name="about">
+    <div class="about-header">
+      <div class="about-title">
+        <i class="el-icon-tickets" style="color: #ff6700;"></i>
+        关于我们
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
   data() {
-    return {
-      shop: []
-    };
-  },
-  created() {},
-  methods: {},
-  computed: {},
-  watch: {}
+    return {};
+  }
 };
 </script>
 <style scoped>
 .about {
-  min-height: 800px;
+  background-color: #f5f5f5;
+}
+.about .about-header {
+  height: 64px;
+  background-color: #fff;
+  border-bottom: 2px solid #ff6700;
+}
+.about .about-header .about-title {
+  width: 1225px;
   margin: 0 auto;
-  max-width: 1225px;
+  height: 64px;
+  line-height: 64px;
+  font-size: 28px;
+}
+.about .content {
+  padding: 20px 0;
+  width: 1225px;
+  margin: 0 auto;
+}
+.about .content .goods-list {
+  margin-left: -13.7px;
+  overflow: hidden;
 }
 </style>

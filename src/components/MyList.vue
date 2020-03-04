@@ -3,12 +3,13 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-26 16:57:04
+ * @LastEditTime: 2020-03-04 21:53:01
  -->
 <template>
   <div id="myList" class="myList">
     <ul>
       <li v-for="item in list" :key="item.product_id">
+        <i class="el-icon-close delete" v-show="isDelete"></i>
         <router-link :to="{ path: '/goods/details', query: {productID:item.product_id} }">
           <img :src="$target +item.product_picture" alt />
           <h2>{{item.product_name}}</h2>
@@ -36,7 +37,7 @@ export default {
   name: "MyList",
   // list为父组件传过来的商品列表
   // isMore为是否显示“浏览更多”
-  props: ["list", "isMore"],
+  props: ["list", "isMore","isDelete"],
   data() {
     return {};
   },
@@ -121,6 +122,14 @@ export default {
   color: #333;
 }
 .myList #more a:hover {
+  color: #ff6700;
+}
+.myList ul li .delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.myList ul li .delete:hover {
   color: #ff6700;
 }
 </style>
