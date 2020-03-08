@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:35:56
+ * @LastEditTime: 2020-03-08 12:11:13
  -->
 <template>
   <div class="goods" id="goods" name="goods">
@@ -140,6 +140,19 @@ export default {
     }
   },
   methods: {
+    // 返回顶部
+    backtop() {
+      const timer = setInterval(function() {
+        const top = document.documentElement.scrollTop || document.body.scrollTop;
+        const speed = Math.floor(-top / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          top + speed;
+
+        if (top === 0) {
+          clearInterval(timer);
+        }
+      }, 20);
+    },
     // 页码变化调用currentChange方法
     currentChange(currentPage) {
       this.currentPage = currentPage;
@@ -148,6 +161,7 @@ export default {
       } else {
         this.getData();
       }
+      this.backtop();
     },
     // 向后端请求分类列表数据
     getCategory() {
@@ -200,7 +214,7 @@ export default {
           this.total = res.data.total;
         })
         .catch(err => {
-         return Promise.reject(err);
+          return Promise.reject(err);
         });
     }
   }
