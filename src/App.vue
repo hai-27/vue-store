@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-08 11:56:18
+ * @LastEditTime: 2020-03-08 17:41:12
  -->
 <template>
   <div id="app" name="app">
@@ -97,7 +97,11 @@
               </p>
             </div>
           </div>
-
+          <div class="github">
+            <a href="https://github.com/hai-27/vue-store" target="_blank">
+              <div class="github-but"></div>
+            </a>
+          </div>
           <div class="mod_help">
             <p>
               <router-link to="/">首页</router-link>
@@ -108,9 +112,6 @@
             </p>
             <p class="coty">商城版权所有 &copy; 2012-2021</p>
           </div>
-          <el-backtop target="#app .el-main" :bottom="100" :visibility-height="100" :right="40">
-            <div>UP</div>
-          </el-backtop>
         </div>
       </el-footer>
       <!-- 底栏容器END -->
@@ -329,12 +330,23 @@ a:hover {
   text-decoration: none;
   background: url("./assets/imgs/us-icon.png") no-repeat left 0;
 }
+.footer .github {
+  height: 50px;
+  line-height: 50px;
+  margin-top: 20px;
+}
+.footer .github .github-but {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background: url("./assets/imgs/github.png") no-repeat;
+}
 .footer .mod_help {
   text-align: center;
   color: #888888;
 }
 .footer .mod_help p {
-  margin: 38px 0 16px 0;
+  margin: 20px 0 16px 0;
 }
 
 .footer .mod_help p a {
