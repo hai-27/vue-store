@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-16 20:20:26
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 22:52:41
+ * @LastEditTime: 2020-03-07 21:59:26
  -->
 <template>
   <div id="details">
@@ -177,11 +177,6 @@ export default {
             case "003":
               // 商品数量达到限购数量
               this.dis = true;
-              this.notifyError(res.data.msg);
-              break;
-            case "004":
-              // 没有登录
-              this.$store.dispatch("setShowLogin", true);
               this.notifyError(res.data.msg);
               break;
             default:

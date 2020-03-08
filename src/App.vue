@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:37:48
+ * @LastEditTime: 2020-03-08 11:56:18
  -->
 <template>
   <div id="app" name="app">
@@ -44,7 +44,7 @@
         </div>
       </div>
       <!-- 顶部导航栏END -->
-      
+
       <!-- 顶栏容器 -->
       <el-header>
         <el-menu
@@ -108,6 +108,9 @@
             </p>
             <p class="coty">商城版权所有 &copy; 2012-2021</p>
           </div>
+          <el-backtop target="#app .el-main" :bottom="100" :visibility-height="100" :right="40">
+            <div>UP</div>
+          </el-backtop>
         </div>
       </el-footer>
       <!-- 底栏容器END -->
@@ -125,7 +128,7 @@ export default {
   },
   data() {
     return {
-      activeIndex: "",// 头部导航栏选中的标签
+      activeIndex: "", // 头部导航栏选中的标签
       search: "", // 搜索条件
       register: false, // 是否显示注册组件
       visible: false // 是否退出登录
@@ -142,18 +145,20 @@ export default {
     ...mapGetters(["getUser", "getNum"])
   },
   watch: {
-    // 获取vuex的登录状态,如果已经登录,获取该用户的购物车信息
+    // 获取vuex的登录状态
     getUser: function(val) {
       if (val === "") {
+        // 用户没有登录
         this.setShoppingCart([]);
       } else {
+        // 用户已经登录,获取该用户的购物车信息
         this.$axios
           .post("/api/user/shoppingCart/getShoppingCart", {
             user_id: val.user_id
           })
           .then(res => {
             if (res.data.code === "001") {
-              // 001 为成功, 勾选vuex购物车状态
+              // 001 为成功, 更新vuex购物车状态
               this.setShoppingCart(res.data.shoppingCartData);
             } else {
               // 提示失败信息
