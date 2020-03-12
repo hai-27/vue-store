@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-08 17:41:12
+ * @LastEditTime: 2020-03-12 19:30:36
  -->
 <template>
   <div id="app" name="app">
@@ -141,6 +141,18 @@ export default {
       // 如果已经登录，设置vuex登录状态
       this.setUser(JSON.parse(localStorage.getItem("user")));
     }
+    window.setTimeout(() => {
+      this.$message({
+        duration: 0,
+        showClose: true,
+        message: `
+        <p>如果觉得这个项目还不错，</p>
+        <p style="padding:10px 0">您可以给项目源代码仓库点Star支持一下，谢谢！</p>
+        <p><a href="https://github.com/hai-27/vue-store" target="_blank">Github传送门</a></p>`,
+        dangerouslyUseHTMLString: true,
+        type: "success"
+      });
+    }, 1000 * 60);
   },
   computed: {
     ...mapGetters(["getUser", "getNum"])

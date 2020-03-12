@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-20 17:22:56
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-05 00:23:16
+ * @LastEditTime: 2020-03-12 19:34:00
  -->
 <template>
   <div class="collect">
@@ -66,7 +66,7 @@ export default {
   width: 1225px;
   margin: 0 auto;
   height: 64px;
-  line-height: 64px;
+  line-height: 58px;
   font-size: 28px;
 }
 .collect .content {

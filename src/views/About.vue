@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-04 22:16:54
+ * @LastEditTime: 2020-03-12 19:36:46
  -->
 <template>
   <div class="about" id="about" name="about">
@@ -13,12 +13,16 @@
         关于我们
       </div>
     </div>
+    <div class="about-content">
+      <MyMarkdown></MyMarkdown>
+    </div>
   </div>
 </template>
 <script>
+import MyMarkdown from "../components/MyMarkdown";
 export default {
-  data() {
-    return {};
+  components: {
+    MyMarkdown
   }
 };
 </script>
@@ -46,5 +50,10 @@ export default {
 .about .content .goods-list {
   margin-left: -13.7px;
   overflow: hidden;
+}
+.about .about-content {
+  width: 1225px;
+  margin: 0 auto;
+  background-color: #fff;
 }
 </style>
