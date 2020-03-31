@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-23 23:46:39
  * @LastEditors: hai-27
- * @LastEditTime: 2020-02-27 13:35:06
+ * @LastEditTime: 2020-03-29 13:10:21
  -->
 <template>
   <div class="confirmOrder">
@@ -179,7 +179,7 @@ export default {
                 // 删除已经结算的购物车商品
                 this.deleteShoppingCart(temp.id);
               }
-              // 提示结算价格
+              // 提示结算结果
               this.notifySucceed(res.data.msg);
               // 跳转我的订单页面
               this.$router.push({ path: "/order" });
