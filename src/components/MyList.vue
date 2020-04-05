@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-05 01:37:50
+ * @LastEditTime: 2020-04-05 13:22:22
  -->
 <template>
   <div id="myList" class="myList">
@@ -116,8 +116,10 @@ export default {
   transform: translate3d(0, -2px, 0);
 }
 .myList ul li img {
-  width: 160px;
   display: block;
+  width: 160px;
+  height: 160px;
+  background: url(../assets/imgs/placeholder.png) no-repeat 50%;
   margin: 0 auto;
 }
 .myList ul li h2 {

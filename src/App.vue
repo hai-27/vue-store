@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-02-07 16:23:00
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-12 19:30:36
+ * @LastEditTime: 2020-04-05 13:14:48
  -->
 <template>
   <div id="app" name="app">
@@ -141,7 +141,7 @@ export default {
       // 如果已经登录，设置vuex登录状态
       this.setUser(JSON.parse(localStorage.getItem("user")));
     }
-    window.setTimeout(() => {
+    /* window.setTimeout(() => {
       this.$message({
         duration: 0,
         showClose: true,
@@ -152,7 +152,7 @@ export default {
         dangerouslyUseHTMLString: true,
         type: "success"
       });
-    }, 1000 * 60);
+    }, 1000 * 60); */
   },
   computed: {
     ...mapGetters(["getUser", "getNum"])
