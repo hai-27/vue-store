@@ -70,7 +70,7 @@
 
 购物车采用vuex实现，页面效果参考了小米商城的购物车。
 
-详细实现过程请看：[基于Vuex实现小米商城购物车](https://github.com/hai-27/hai-27.github.io/blob/master/page/%E5%9F%BA%E4%BA%8EVuex%E5%AE%9E%E7%8E%B0%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8E%E8%B4%AD%E7%89%A9%E8%BD%A6.md)
+详细实现过程请看：[基于Vuex实现小米商城购物车](https://juejin.im/post/5e660ef9518825490276748a)
 
 ### 订单结算
 
