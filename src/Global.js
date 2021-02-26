@@ -3,10 +3,10 @@
  * @Author: hai-27
  * @Date: 2020-02-23 13:40:18
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-05 01:41:50
+ * @LastEditTime: 2021-02-27 04:29:16
  */
 exports.install = function (Vue) {
-  Vue.prototype.$target = "http://47.115.85.237:3000/"; // 线上后端地址
+  Vue.prototype.$target = "http://106.15.179.105:3000/"; // 线上后端地址
   // Vue.prototype.$target = "http://localhost:3000/"; // 本地后端地址
   // 封装提示成功的弹出框
   Vue.prototype.notifySucceed = function (msg) {
